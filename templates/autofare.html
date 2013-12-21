@@ -1,0 +1,30 @@
+<!doctype html>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+function fare(){
+	var km = $('#dist').val();
+	var fare = 0.0;
+	if(km <= 1.9)
+		fare =  25.0;
+	else
+		fare = (km-1.9)*13 + 25;
+	$('#result').html('<h2>Calculated Auto fare for '+km+'km: '+fare.toFixed(1)+'₹</h2>');
+}
+$( document ).ready(function() {
+$("#dist").keyup(function(event){
+    if(event.keyCode == 13){
+        fare();//$("#id_of_button").click();
+    }
+});
+});
+
+</script>
+<title>Bengaluru Auto fare calculator</title>
+<h1>Bengaluru Auto fare calculator</h1>
+<div>
+<input type ="text" name= "distance" placeholder = "Enter distance in km" id = "dist">
+<button onclick="fare()">Find Fare</button>
+<br><br>
+<div id="result"></div>
+</div>
+<div style="float: right;margin-right: 5%;">{{table}} </div>
