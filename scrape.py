@@ -20,7 +20,10 @@ def autofare(name=None):
 		i.attrib['align']='center'
 	html_object.cssselect("#MC_RateCardDataList td")[::-1][0].drop_tree()
 	#print lxml.html.tostring(fare_table[0])
-	return render_template('autofare.html', name=name, table = Markup(lxml.html.tostring(fare_table[0])))
+	table = Markup(lxml.html.tostring(fare_table[0]))
+	min_fare = int(html_object.cssselect("#MC_lblMinimumFare")[0].text_content()[2:4])
+	per_unit = int(html_object.cssselect("#MC_lblFarePerUnitDistance")[0].text_content()[2:4])
+	return render_template('autofare.html', name=name, table = table, min_fare=min_fare, per_unit = per_unit)
 	
 def get_source(url):
 	html = urlopen(url).read()
