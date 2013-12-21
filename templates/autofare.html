@@ -7,7 +7,7 @@ function fare(){
 	if(km <= 1.9)
 		fare =  {{min_fare}} ; // minimum fare scraped from taxiautofare.com
 	else
-		fare = (km-1.9)*{{per_unit}} + 25; // per unit fare scraped from taxiautofare.com
+		fare = (km-1.9)*{{per_unit}} + {{min_fare}} ; // per unit fare scraped from taxiautofare.com
 	$('#result').html('<h2>Calculated Auto fare for '+km+'km: '+fare.toFixed(1)+'₹</h2>');
 }
 $( document ).ready(function() {
