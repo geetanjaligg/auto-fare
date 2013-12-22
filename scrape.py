@@ -1,5 +1,6 @@
 from urllib import urlopen
 import lxml.html
+import flask
 from lxml.html import fromstring
 from flask import Flask, render_template, Markup
 app = Flask(__name__)
@@ -8,8 +9,9 @@ app = Flask(__name__)
 def hello_world():
 	return 'Hello World!'
 
+@app.route('/autofare/<format>')
 @app.route('/autofare/')
-def autofare(name=None):
+def autofare(format=None):
 	html_object = get_source("http://www.taxiautofare.com/taxi-fare-card/Bengaluru-Auto-fare")
 	fare_table = html_object.cssselect("#MC_RateCardDataList")
 	#print lxml.html.tostring(fare_table[0])
@@ -23,7 +25,9 @@ def autofare(name=None):
 	table = Markup(lxml.html.tostring(fare_table[0]))
 	min_fare = int(html_object.cssselect("#MC_lblMinimumFare")[0].text_content()[2:4])
 	per_unit = int(html_object.cssselect("#MC_lblFarePerUnitDistance")[0].text_content()[2:4])
-	return render_template('autofare.html', name=name, table = table, min_fare=min_fare, per_unit = per_unit)
+	if format == 'json':
+		return flask.jsonify(min_fare=min_fare, per_unit = per_unit)
+	return render_template('autofare.html', table = table, min_fare=min_fare, per_unit = per_unit)
 	
 def get_source(url):
 	html = urlopen(url).read()
