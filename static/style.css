@@ -1,0 +1,40 @@
+@media only screen and (max-width: 480px) {
+  #input {
+
+  }
+  #table{
+  }
+  #footer{
+  	margin-left: 35%;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 640px){
+ #footer{
+  	margin-left: 35%;
+	margin-top: 1%;
+  }
+  }
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+ #footer{
+  	margin-left: 16%;
+	margin-top: 80%;
+  }
+  #table{
+  	position: absolute;
+  }
+}
+@media only screen and (min-width: 992px){
+  #input {
+  	width: 40%;
+  	position: fixed;
+  }
+  #table{
+  	float: right;
+  	margin-right: 5%;
+  	margin-top: 0.0%;
+  }
+  #footer{
+  	margin-top: 45%;
+  	margin-left: 44%;
+  }
+}
