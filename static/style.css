@@ -28,13 +28,18 @@
   	width: 40%;
   	position: fixed;
   }
+  #input1 {
+    width: 40%;
+    position: fixed;
+    margin-top: 2%;
+  }
   #table{
   	float: right;
   	margin-right: 5%;
   	margin-top: -3%;
   }
   #footer{
-  	margin-top: 45%;
+  	margin-top: 38%;
   	margin-left: 44%;
   }
 }

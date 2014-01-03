@@ -15,12 +15,29 @@ function fare(){
 		fare =  {{min_fare}} ; // minimum fare scraped from taxiautofare.com
 	else
 		fare = (km-1.9)*{{per_unit}} + {{min_fare}} ; // per unit fare scraped from taxiautofare.com
+	$("#input1").css('margin-top','7%');
 	$('#result').html('<h2>Calculated Auto fare for '+km+'km: '+fare.toFixed(1)+'₹</h2>');
+}
+
+function newfare(){
+	var oldfare = $('#old').val();
+	var nfare = 0.0;
+	if(oldfare == 20)
+		nfare =  {{min_fare}} ; // minimum fare scraped from taxiautofare.com
+	else
+		nfare = (oldfare-20)/11*{{per_unit}} + {{min_fare}} ;
+	$('#newresult').html('<h2>Calculated new Auto fare for '+oldfare+'₹: '+nfare.toFixed(1)+'₹</h2>');
+
 }
 $( document ).ready(function() {
 $("#dist").keyup(function(event){
     if(event.keyCode == 13){
         fare();
+    }
+});
+$("#old").keyup(function(event){
+    if(event.keyCode == 13){
+        newfare();
     }
 });
 });
@@ -30,6 +47,7 @@ $("#dist").keyup(function(event){
  <div class="col-sm-offset-1">
 <h3>Bengaluru Auto fare calculator </h3>
 </div>
+<br><br>
 <div id = "input">
 <div class="row">
  <div class="col-xs-7">
@@ -43,6 +61,20 @@ $("#dist").keyup(function(event){
            </button></div>
            </div>
 <div id="result" class="col-sm-offset-1" ></div>
+</div><br><br>
+<div id = "input1">
+<div class="row">
+ <div class="col-xs-7">
+<input  type ="text" name= "old" placeholder = "Enter old fare" id = "old"  class="form-control input-lg col-sm-offset-2 col-sm-4" >
+</div>
+<div class="col-xs-2" style="margin-top: 6px;">
+            <button class="btn btn-primary col-sm-offset-8" id="submit" onclick="newfare()">
+            Meter eshtu?
+             <span class="glyphicon glyphicon-thumbs-up"></span> 
+             <!-- <span class="glyphicon glyphicon-hand-left"></span> -->
+           </button></div>
+           </div>
+<div id="newresult" class="col-sm-offset-1" ></div>
 </div>
 <div id = "table">{{table}} <p style="float: right;margin-top: 1%;"> scraped from <a href="http://www.taxiautofare.com/">taxiautofare.com</a></p></div>
 <footer id = "footer"><a href="https://twitter.com/geetanjaligg">@geetanjaligg ;)</a></footer>
