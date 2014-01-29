@@ -44,8 +44,18 @@ $("#old").keyup(function(event){
 
 </script>
 <title>Bengaluru Auto fare calculator</title>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=210601982460002";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
  <div class="col-sm-offset-1">
-<h3>Bengaluru Auto fare calculator </h3>
+<h3>Bengaluru Auto fare calculator &nbsp; <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://geetanjaligg.in/autofare" data-hashtags="Bengaluru,autofare">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><div class="fb-like" data-href="http://geetanjaligg.in/autofare" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></h3>
 </div>
 <br><br>
 <div id = "input">
@@ -78,3 +88,4 @@ $("#old").keyup(function(event){
 </div>
 <div id = "table">{{table}} <p style="float: right;margin-top: 1%;"> scraped from <a href="http://www.taxiautofare.com/">taxiautofare.com</a></p></div>
 <footer id = "footer"><a href="https://twitter.com/geetanjaligg">@geetanjaligg ;)</a></footer>
+</body>
